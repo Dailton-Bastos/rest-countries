@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import { twMerge } from 'tailwind-merge'
+
+import { Header } from '@/components/Header'
+
 import './globals.css'
 
 const nunito = Nunito({ subsets: ['latin'] })
@@ -18,6 +21,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={twMerge('bg-gray-50', nunito.className)}>
+        <Header />
+
         {children}
       </body>
     </html>
