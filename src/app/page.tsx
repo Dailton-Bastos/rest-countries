@@ -3,5 +3,5 @@ export default function Home() {
     <h1>
       Frontend Mentor - REST Countries API with color theme switcher - Challenge
     </h1>
-  );
+  )
 }
