@@ -12,6 +12,7 @@ const config: Config = {
         white: 'hsl(0, 0%, 100%)',
         gray: {
           50: 'hsl(0, 0%, 98%)',
+          900: 'hsl(0, 0%, 52%)',
         },
         blue: {
           800: 'hsl(209, 23%, 22%)',
