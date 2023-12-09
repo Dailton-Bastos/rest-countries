@@ -8,10 +8,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        white: 'hsl(0, 0%, 100%)',
+        gray: {
+          50: 'hsl(0, 0%, 98%)',
+        },
+        blue: {
+          800: 'hsl(209, 23%, 22%)',
+          900: 'hsl(207, 26%, 17%)',
+          950: 'hsl(200, 15%, 8%)',
+        },
+      },
+      fontFamily: {
+        sans: ['Nunito', 'sans-serif'],
       },
     },
   },
