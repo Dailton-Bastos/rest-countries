@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={twMerge('bg-gray-50', nunito.className)}>
         <Header />
 
-        {children}
+        <div className='max-w-[1440px] mx-auto py-20 px-4'>{children}</div>
       </body>
     </html>
   )
