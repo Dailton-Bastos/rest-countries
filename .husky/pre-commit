@@ -15,4 +15,3 @@ yarn lint ||
 echo '🎉 No error found: committing this now.... ✨🚀🏄‍♂️🍻'
 
 yarn lint && yarn type-check
-exit 1
