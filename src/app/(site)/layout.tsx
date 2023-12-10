@@ -2,6 +2,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 
 import { Search } from './components/Search'
+import { OrderBy } from './components/OrderBy'
 
 type PropsType = {
   children: React.ReactNode
@@ -17,6 +18,8 @@ const HomeLayout = ({ children }: PropsType) => {
       <section className='py-5'>
         <div className='flex items-center justify-between'>
           <Search />
+
+          <OrderBy />
         </div>
       </section>
 
