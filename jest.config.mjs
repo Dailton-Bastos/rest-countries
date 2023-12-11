@@ -9,6 +9,8 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
   preset: 'ts-jest',
+  automock: false,
+  setupFiles: ['./src/mocks/index.ts'],
 }
 
 export default createJestConfig(config)
