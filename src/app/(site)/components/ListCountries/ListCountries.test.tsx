@@ -37,15 +37,46 @@ describe('List Countries Component', () => {
     },
   ]
 
+  const totalCountries = 8
+
+  const onNextPage = () => {}
+
   it('should render Cards list', () => {
-    render(<ListCountries data={data} />)
+    render(
+      <ListCountries
+        data={data}
+        totalCountries={totalCountries}
+        onNextPage={onNextPage}
+        hasMore
+      />
+    )
 
     screen.getByText(/christmas island/i)
   })
 
-  it('should show No Countries found message, if card list empty', () => {
-    render(<ListCountries data={[]} />)
+  it('should render Loading component on scroll page', () => {
+    render(
+      <ListCountries
+        data={data}
+        totalCountries={totalCountries}
+        onNextPage={onNextPage}
+        hasMore
+      />
+    )
 
-    screen.getByText(/no countries found/i)
+    screen.getByText(/loading/i)
+  })
+
+  it('should render end message if has no more', () => {
+    render(
+      <ListCountries
+        data={data}
+        totalCountries={totalCountries}
+        onNextPage={onNextPage}
+        hasMore={false}
+      />
+    )
+
+    screen.getByText(/you have seen it all/i)
   })
 })

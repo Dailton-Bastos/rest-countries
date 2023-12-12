@@ -12,7 +12,27 @@ type PropsType = {
   data: Country[]
 }
 
+const PageSize = 8
+
 export const PageContent = ({ data }: PropsType) => {
+  const [countries, setCountries] = React.useState<Country[]>([])
+
+  const [currentPage, setCurrentPage] = React.useState(1)
+
+  const totalCountries = countries.length
+
+  const hasMore = data.length > totalCountries
+
+  const onNextPage = React.useCallback(() => {
+    setCurrentPage((prev) => prev + 1)
+  }, [])
+
+  React.useEffect(() => {
+    const firstPageIndex = currentPage * PageSize
+
+    setCountries(data.slice(0, firstPageIndex))
+  }, [currentPage, data])
+
   return (
     <React.Fragment>
       <section className='py-6'>
@@ -24,7 +44,12 @@ export const PageContent = ({ data }: PropsType) => {
       </section>
 
       <section className='py-6'>
-        <ListCountries data={data} />
+        <ListCountries
+          data={countries}
+          totalCountries={totalCountries}
+          hasMore={hasMore}
+          onNextPage={onNextPage}
+        />
       </section>
     </React.Fragment>
   )
