@@ -23,6 +23,16 @@ const config: Config = {
       fontFamily: {
         sans: ['Nunito', 'sans-serif'],
       },
+      animation: {
+        'move-btn-scroll': 'movebtn 3s ease-in-out',
+      },
+      keyframes: {
+        movebtn: {
+          '0%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(20px)' },
+          '100%': { transform: 'translateY(0)' },
+        },
+      },
     },
   },
   plugins: [],

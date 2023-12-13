@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Metadata } from 'next'
+import { ScrollToTop } from '@/components/ScrollToTop'
 
 type PropsType = {
   children: React.ReactNode
@@ -10,7 +11,13 @@ export const metadata: Metadata = {
 }
 
 const HomeLayout = ({ children }: PropsType) => {
-  return <div className='pt-6'>{children}</div>
+  return (
+    <div className='pt-6'>
+      {children}
+
+      <ScrollToTop />
+    </div>
+  )
 }
 
 export default HomeLayout
