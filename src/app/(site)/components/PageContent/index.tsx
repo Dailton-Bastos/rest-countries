@@ -26,7 +26,7 @@ export const PageContent = ({ data }: PropsType) => {
 
   const [state, dispatch] = useImmerReducer(countriesReducer, initialState)
 
-  const { countries, total } = state
+  const { countries, total, orderBy: selected } = state
 
   const hasMore = total > countries.length
   const dataLength = countries.length
@@ -48,13 +48,21 @@ export const PageContent = ({ data }: PropsType) => {
     [dispatch]
   )
 
+  const handleRemoveFilter = React.useCallback(() => {
+    dispatch({ type: 'REMOVE_FILTER', payload: null })
+  }, [dispatch])
+
   return (
     <React.Fragment>
       <section className='py-6'>
         <div className='flex items-center justify-between'>
           <Search />
 
-          <OrderBy orderBy={orderBy} />
+          <OrderBy
+            orderBy={orderBy}
+            selected={selected}
+            removeFilter={handleRemoveFilter}
+          />
         </div>
       </section>
 

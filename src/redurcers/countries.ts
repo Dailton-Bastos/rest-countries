@@ -12,6 +12,10 @@ type ActionType =
       type: 'ORDER_BY'
       payload: OrderByType
     }
+  | {
+      type: 'REMOVE_FILTER'
+      payload: null
+    }
 
 type StateType = {
   data: Country[]
@@ -60,6 +64,14 @@ export const countriesReducer = (
 
       draft.page = 1
       break
+
+    case 'REMOVE_FILTER': {
+      draft.orderBy = ''
+      draft.page = 1
+      draft.countries = draft.data.slice(0, PageSize)
+      draft.total = draft.data.length
+      break
+    }
 
     default:
       break

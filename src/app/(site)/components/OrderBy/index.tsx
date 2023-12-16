@@ -1,13 +1,15 @@
 'use client'
 
 import React from 'react'
-import { IoIosArrowDown } from 'react-icons/io'
+import { IoIosArrowDown, IoMdCloseCircle } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
 import { useOnClickOutside } from 'usehooks-ts'
 import type { OrderByType } from '@/@types'
 
 type PropsType = {
   orderBy: (payload: OrderByType) => void
+  selected: OrderByType
+  removeFilter: () => void
 }
 
 const orderByItems: Array<{
@@ -19,7 +21,7 @@ const orderByItems: Array<{
     type: 'africa',
   },
   {
-    name: 'America',
+    name: 'Americas',
     type: 'americas',
   },
   {
@@ -36,7 +38,7 @@ const orderByItems: Array<{
   },
 ]
 
-export const OrderBy = ({ orderBy }: PropsType) => {
+export const OrderBy = ({ orderBy, selected, removeFilter }: PropsType) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const ref = React.useRef<null | HTMLDivElement>(null)
@@ -49,38 +51,55 @@ export const OrderBy = ({ orderBy }: PropsType) => {
 
   return (
     <div className='relative' ref={ref}>
-      <button
-        className='
-			flex
-			items-center
-			justify-between
-			gap-x-8
-			text-blue-950
-			font-semibold
-			text-sm
-			shadow
-			rounded-md
-			bg-white
-			px-4
-			py-3
-			'
-        data-testid='button-dropdown'
-        onClick={() => setIsOpen((prev) => !prev)}
-      >
-        Filter by Region
-        <div
-          className={twMerge(
-            `
+      <div className='flex items-center justify-center gap-5'>
+        {selected && (
+          <div className='flex items-center justify-center gap-2 py-2'>
+            <span
+              className='text-blue-950 font-bold text-sm capitalize'
+              data-testid='selected-order'
+            >
+              {selected}
+            </span>
+            <button data-testid='button-order' onClick={removeFilter}>
+              <IoMdCloseCircle />
+            </button>
+          </div>
+        )}
+
+        <button
+          className='
+						flex
+						items-center
+						justify-between
+						gap-x-8
+						text-blue-950
+						font-semibold
+						text-sm
+						shadow
+						rounded-md
+						bg-white
+						px-4
+						h-11
+						w-48
+					'
+          data-testid='button-dropdown'
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          Filter by Region
+          <div
+            className={twMerge(
+              `
 						transition-transform
 						duration-500
 
 					`,
-            isOpen && 'rotate-180'
-          )}
-        >
-          <IoIosArrowDown color='hsl(200, 15%, 8%)' size={18} />
-        </div>
-      </button>
+              isOpen && 'rotate-180'
+            )}
+          >
+            <IoIosArrowDown color='hsl(200, 15%, 8%)' size={18} />
+          </div>
+        </button>
+      </div>
 
       {isOpen && (
         <div
@@ -91,7 +110,9 @@ export const OrderBy = ({ orderBy }: PropsType) => {
 						rounded-md
 						bg-white
 						absolute
-						w-full
+						top-11
+						right-0
+						w-48
 					'
           data-testid='menu-dropdown'
         >
@@ -105,10 +126,18 @@ export const OrderBy = ({ orderBy }: PropsType) => {
             {orderByItems?.map((order) => (
               <li
                 key={order.type}
-                className='font-semibold text-sm hover:bg-gray-50'
+                className={twMerge(
+                  `
+									font-semibold
+									text-sm
+									hover:bg-gray-50
+								`,
+                  order.type === selected && 'bg-gray-100'
+                )}
               >
                 <button
                   className='w-full px-4 py-1 text-left'
+                  data-testid={`button-order-${order.type}`}
                   onClick={() => {
                     orderBy(order.type)
                     handleClick()
