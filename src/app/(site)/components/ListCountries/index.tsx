@@ -7,14 +7,14 @@ import type { Country } from '@/@types/country'
 
 type PropsType = {
   data: Country[]
-  totalCountries: number
+  dataLength: number
   onNextPage: () => void
   hasMore: boolean
 }
 
 export const ListCountries = ({
   data,
-  totalCountries,
+  dataLength,
   onNextPage,
   hasMore,
 }: PropsType) => {
@@ -38,7 +38,7 @@ export const ListCountries = ({
 
   return (
     <InfiniteScroll
-      dataLength={totalCountries}
+      dataLength={dataLength}
       next={onNextPage}
       hasMore={hasMore}
       loader={loader}

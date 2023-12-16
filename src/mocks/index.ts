@@ -1,4 +1,7 @@
 import { enableFetchMocks } from 'jest-fetch-mock'
+import type { OrderByType } from '@/@types'
+
+enableFetchMocks()
 
 export const countryMock = {
   name: {
@@ -28,4 +31,28 @@ export const countryMock = {
   },
 }
 
-enableFetchMocks()
+export const orderByMock: Array<{
+  name: string
+  orderBy: OrderByType
+}> = [
+  {
+    name: 'Africa',
+    orderBy: 'africa',
+  },
+  {
+    name: 'America',
+    orderBy: 'americas',
+  },
+  {
+    name: 'Asia',
+    orderBy: 'asia',
+  },
+  {
+    name: 'Europe',
+    orderBy: 'europe',
+  },
+  {
+    name: 'Oceania',
+    orderBy: 'oceania',
+  },
+]

@@ -1,37 +1,52 @@
 'use client'
 
 import React from 'react'
+import { useImmerReducer } from 'use-immer'
 
 import { Search } from '../Search'
 import { OrderBy } from '../OrderBy'
 
 import type { Country } from '@/@types/country'
 import { ListCountries } from '../ListCountries'
+import { countriesReducer } from '@/redurcers/countries'
+import type { OrderByType } from '@/@types'
 
 type PropsType = {
   data: Country[]
 }
 
-const PageSize = 8
-
 export const PageContent = ({ data }: PropsType) => {
-  const [countries, setCountries] = React.useState<Country[]>([])
+  const initialState = {
+    data,
+    countries: data.slice(0, 8),
+    page: 1,
+    orderBy: '' as OrderByType,
+    total: data.length,
+  }
 
-  const [currentPage, setCurrentPage] = React.useState(1)
+  const [state, dispatch] = useImmerReducer(countriesReducer, initialState)
 
-  const totalCountries = countries.length
+  const { countries, total } = state
 
-  const hasMore = data.length > totalCountries
+  const hasMore = total > countries.length
+  const dataLength = countries.length
 
   const onNextPage = React.useCallback(() => {
-    setCurrentPage((prev) => prev + 1)
-  }, [])
+    dispatch({
+      type: 'NEXT_PAGE',
+      payload: 1,
+    })
+  }, [dispatch])
 
-  React.useEffect(() => {
-    const firstPageIndex = currentPage * PageSize
-
-    setCountries(data.slice(0, firstPageIndex))
-  }, [currentPage, data])
+  const orderBy = React.useCallback(
+    (payload: OrderByType) => {
+      dispatch({
+        type: 'ORDER_BY',
+        payload,
+      })
+    },
+    [dispatch]
+  )
 
   return (
     <React.Fragment>
@@ -39,14 +54,14 @@ export const PageContent = ({ data }: PropsType) => {
         <div className='flex items-center justify-between'>
           <Search />
 
-          <OrderBy />
+          <OrderBy orderBy={orderBy} />
         </div>
       </section>
 
       <section className='py-6'>
         <ListCountries
           data={countries}
-          totalCountries={totalCountries}
+          dataLength={dataLength}
           hasMore={hasMore}
           onNextPage={onNextPage}
         />

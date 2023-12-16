@@ -45,7 +45,7 @@ describe('List Countries Component', () => {
     render(
       <ListCountries
         data={data}
-        totalCountries={totalCountries}
+        dataLength={totalCountries}
         onNextPage={onNextPage}
         hasMore
       />
@@ -58,7 +58,7 @@ describe('List Countries Component', () => {
     render(
       <ListCountries
         data={data}
-        totalCountries={totalCountries}
+        dataLength={totalCountries}
         onNextPage={onNextPage}
         hasMore
       />
@@ -71,7 +71,7 @@ describe('List Countries Component', () => {
     render(
       <ListCountries
         data={data}
-        totalCountries={totalCountries}
+        dataLength={totalCountries}
         onNextPage={onNextPage}
         hasMore={false}
       />

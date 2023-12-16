@@ -4,8 +4,39 @@ import React from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
 import { useOnClickOutside } from 'usehooks-ts'
+import type { OrderByType } from '@/@types'
 
-export const OrderBy = () => {
+type PropsType = {
+  orderBy: (payload: OrderByType) => void
+}
+
+const orderByItems: Array<{
+  name: string
+  type: OrderByType
+}> = [
+  {
+    name: 'Africa',
+    type: 'africa',
+  },
+  {
+    name: 'America',
+    type: 'americas',
+  },
+  {
+    name: 'Asia',
+    type: 'asia',
+  },
+  {
+    name: 'Europe',
+    type: 'europe',
+  },
+  {
+    name: 'Oceania',
+    type: 'oceania',
+  },
+]
+
+export const OrderBy = ({ orderBy }: PropsType) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const ref = React.useRef<null | HTMLDivElement>(null)
@@ -71,25 +102,22 @@ export const OrderBy = () => {
 						py-2
 					'
           >
-            <li className='font-semibold text-sm hover:bg-gray-50'>
-              <button className='w-full px-4 py-1 text-left'>Africa</button>
-            </li>
-
-            <li className='font-semibold text-sm hover:bg-gray-50'>
-              <button className='w-full px-4 py-1 text-left'>America</button>
-            </li>
-
-            <li className='font-semibold text-sm hover:bg-gray-50'>
-              <button className='w-full px-4 py-1 text-left'>Asia</button>
-            </li>
-
-            <li className='font-semibold text-sm hover:bg-gray-50'>
-              <button className='w-full px-4 py-1 text-left'>Europe</button>
-            </li>
-
-            <li className='font-semibold text-sm hover:bg-gray-50'>
-              <button className='w-full px-4 py-1 text-left'>Oceania</button>
-            </li>
+            {orderByItems?.map((order) => (
+              <li
+                key={order.type}
+                className='font-semibold text-sm hover:bg-gray-50'
+              >
+                <button
+                  className='w-full px-4 py-1 text-left'
+                  onClick={() => {
+                    orderBy(order.type)
+                    handleClick()
+                  }}
+                >
+                  {order.name}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       )}

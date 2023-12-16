@@ -3,8 +3,10 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { OrderBy } from '.'
 
 describe('OrderBy Component', () => {
-  it('should render Menu on button click', () => {
-    render(<OrderBy />)
+  const orderBy = () => {}
+
+  void it('should render Menu on button click', () => {
+    render(<OrderBy orderBy={orderBy} />)
 
     const button = screen.getByTestId('button-dropdown')
 
