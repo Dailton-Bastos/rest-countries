@@ -38,6 +38,12 @@ export const ListCountries = () => {
     </div>
   )
 
+  if (dataLength === 0) {
+    return (
+      <p className='text-lg font-semibold text-center'>No countries found!</p>
+    )
+  }
+
   return (
     <InfiniteScroll
       dataLength={dataLength}

@@ -20,6 +20,11 @@ export const PageProvider = ({ children, data }: PropsType) => {
     page: 1,
     orderBy: '' as OrderByType,
     total: data.length,
+    search: {
+      isLoading: false,
+      // results: [],
+      value: '',
+    },
   })
 
   const value = React.useMemo(

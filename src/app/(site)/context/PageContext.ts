@@ -10,6 +10,11 @@ type PageContextType = {
     page: number
     orderBy: OrderByType
     total: number
+    search: {
+      isLoading: boolean
+      // results: Country[]
+      value: string
+    }
   }
   dispatch: React.Dispatch<ActionType>
 }

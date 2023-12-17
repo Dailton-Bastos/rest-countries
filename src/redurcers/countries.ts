@@ -1,21 +1,7 @@
 import { Draft } from 'immer'
 
-import type { OrderByType } from '@/@types'
+import type { ActionType, OrderByType } from '@/@types'
 import type { Country } from '@/@types/country'
-
-type ActionType =
-  | {
-      type: 'NEXT_PAGE'
-      payload: number
-    }
-  | {
-      type: 'ORDER_BY'
-      payload: OrderByType
-    }
-  | {
-      type: 'REMOVE_FILTER'
-      payload: null
-    }
 
 type StateType = {
   data: Country[]
@@ -23,6 +9,10 @@ type StateType = {
   page: number
   orderBy: OrderByType
   total: number
+  search: {
+    isLoading: boolean
+    value: string
+  }
 }
 
 export const countriesReducer = (
@@ -48,6 +38,13 @@ export const countriesReducer = (
         return
       }
 
+      if (!!draft.search.value) {
+        draft.total = draft.countries.length
+        draft.countries = draft.countries.slice(0, draft.page * PageSize)
+
+        return
+      }
+
       draft.total = draft.data.length
       draft.countries = draft.data.slice(0, draft.page * PageSize)
       break
@@ -63,6 +60,7 @@ export const countriesReducer = (
       draft.countries = draft.countries.slice(0, PageSize)
 
       draft.page = 1
+      draft.search.value = ''
       break
 
     case 'REMOVE_FILTER': {
@@ -71,6 +69,28 @@ export const countriesReducer = (
       draft.countries = draft.data.slice(0, PageSize)
       draft.total = draft.data.length
       break
+    }
+
+    case 'START_SEARCH': {
+      draft.search.isLoading = true
+      draft.search.value = payload
+      break
+    }
+
+    case 'CLEAN_QUERY': {
+      draft.search.isLoading = false
+      draft.search.value = ''
+      draft.countries = draft.data.slice(0, PageSize)
+      draft.total = draft.data.length
+      break
+    }
+
+    case 'FINISH_SEARCH': {
+      draft.search.isLoading = false
+      draft.orderBy = ''
+      draft.page = 1
+      draft.countries = payload
+      draft.total = payload.length
     }
 
     default:

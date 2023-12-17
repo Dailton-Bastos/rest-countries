@@ -15,6 +15,10 @@ describe('List Countries Component', () => {
     page: 1,
     orderBy: '' as const,
     total: data.length,
+    search: {
+      isLoading: false,
+      value: '',
+    },
   }
 
   const dispatch = jest.fn()
