@@ -25,7 +25,10 @@ export const Card = ({ card }: PropsType) => {
 			hover:shadow-md
 			'
     >
-      <Link href='#' className='w-full h-full flex flex-col'>
+      <Link
+        href={`/country/${name.common}`}
+        className='w-full h-full flex flex-col'
+      >
         <Image
           priority
           src={image}

@@ -1,5 +1,4 @@
 'use server'
-
 import type { Country } from '@/@types/country'
 
 export const getCountries = async (): Promise<Country[]> => {
