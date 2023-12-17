@@ -3,21 +3,23 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import { CgSpinner } from 'react-icons/cg'
 
 import { Card } from '../Card'
-import type { Country } from '@/@types/country'
+import { usePageContext } from '../../context/PageProvider'
 
-type PropsType = {
-  data: Country[]
-  dataLength: number
-  onNextPage: () => void
-  hasMore: boolean
-}
+export const ListCountries = () => {
+  const { state, dispatch } = usePageContext()
 
-export const ListCountries = ({
-  data,
-  dataLength,
-  onNextPage,
-  hasMore,
-}: PropsType) => {
+  const { countries, total } = state
+
+  const hasMore = total > countries.length
+  const dataLength = countries.length
+
+  const onNextPage = React.useCallback(() => {
+    dispatch({
+      type: 'NEXT_PAGE',
+      payload: 1,
+    })
+  }, [dispatch])
+
   const loader = (
     <div className='flex items-center justify-center gap-2 py-10'>
       <div className='animate-spin h-6 w-6'>
@@ -45,7 +47,7 @@ export const ListCountries = ({
       endMessage={endMessage}
     >
       <ul className='grid grid-cols-4 gap-20'>
-        {data?.map((country) => (
+        {countries?.map((country) => (
           <Card key={country?.name?.official} card={country} />
         ))}
       </ul>

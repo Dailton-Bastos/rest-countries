@@ -5,12 +5,7 @@ import { IoIosArrowDown, IoMdCloseCircle } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
 import { useOnClickOutside } from 'usehooks-ts'
 import type { OrderByType } from '@/@types'
-
-type PropsType = {
-  orderBy: (payload: OrderByType) => void
-  selected: OrderByType
-  removeFilter: () => void
-}
+import { usePageContext } from '../../context/PageProvider'
 
 const orderByItems: Array<{
   name: string
@@ -38,10 +33,28 @@ const orderByItems: Array<{
   },
 ]
 
-export const OrderBy = ({ orderBy, selected, removeFilter }: PropsType) => {
+export const OrderBy = () => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const ref = React.useRef<null | HTMLDivElement>(null)
+
+  const { state, dispatch } = usePageContext()
+
+  const { orderBy: selected } = state
+
+  const orderBy = React.useCallback(
+    (payload: OrderByType) => {
+      dispatch({
+        type: 'ORDER_BY',
+        payload,
+      })
+    },
+    [dispatch]
+  )
+
+  const handleRemoveFilter = React.useCallback(() => {
+    dispatch({ type: 'REMOVE_FILTER', payload: null })
+  }, [dispatch])
 
   const handleClick = React.useCallback(() => {
     setIsOpen(false)
@@ -60,7 +73,7 @@ export const OrderBy = ({ orderBy, selected, removeFilter }: PropsType) => {
             >
               {selected}
             </span>
-            <button data-testid='button-order' onClick={removeFilter}>
+            <button data-testid='button-order' onClick={handleRemoveFilter}>
               <IoMdCloseCircle />
             </button>
           </div>
