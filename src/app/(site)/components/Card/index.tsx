@@ -25,16 +25,17 @@ export const Card = ({ card }: PropsType) => {
 			hover:shadow-md
 			'
     >
-      <Link href='#' className='w-full h-full'>
+      <Link href='#' className='w-full h-full flex flex-col'>
         <Image
           priority
           src={image}
           alt={flags?.alt || name?.common}
           width={320}
           height={224}
+          className='max-h-48 object-contain w-full h-auto'
         />
 
-        <div className='px-4 pt-6 pb-10'>
+        <div className='px-4 pt-6 pb-10 mt-auto'>
           <h2 className='text-blue-950 font-extrabold text-2xl'>
             {name?.common}
           </h2>
