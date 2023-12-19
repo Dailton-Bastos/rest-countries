@@ -8,7 +8,7 @@ export const getCountryByName = cache(
   async (name: string): Promise<Country[]> => {
     try {
       const res = await fetch(
-        `https://restcountries.com/v3.1/name/${name}?fullText=true&fields=flags,name,population,region,subregion,capital,currencies,languages,tld,latlng`
+        `https://restcountries.com/v3.1/name/${name}?fullText=true&fields=flags,name,population,region,subregion,capital,currencies,languages,tld,latlng,independent,borders`
       )
 
       if (!res.ok) {

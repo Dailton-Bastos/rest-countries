@@ -22,4 +22,6 @@ export interface Country {
     [key: string]: string
   }
   tld: string[]
+  independent: boolean
+  borders: string[]
 }

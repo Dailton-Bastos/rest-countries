@@ -1,5 +1,6 @@
 import React from 'react'
 import { getCountryByName } from '@/actions/getCountryByName'
+import { PageContent } from './components/PageContent'
 
 export const revalidate = 3600
 
@@ -12,7 +13,7 @@ const Country = async ({ params }: PropsType) => {
 
   const [country] = await getCountryByName(name)
 
-  return <div>Country: {country.name.common}</div>
+  return <PageContent country={country} />
 }
 
 export default Country
