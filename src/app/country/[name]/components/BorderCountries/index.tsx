@@ -52,8 +52,22 @@ export const BorderCountries = ({ borders = [] }: PropsType) => {
   }, [fetchCountryBorders])
 
   return (
-    <div className='flex items-center justify-start gap-4 pt-16'>
-      <strong className='whitespace-nowrap'>Border Countries: </strong>
+    <div
+      className='
+			flex
+			items-start
+			justify-start
+			flex-col
+			gap-4
+			pt-8
+			lg:pt-16
+			lg:flex-row
+			lg:items-center
+		'
+    >
+      <strong className='whitespace-nowrap text-sm lg:text-base'>
+        Border Countries:{' '}
+      </strong>
 
       <ul className='flex items-center justify-stretch flex-wrap gap-2'>
         {isLoading ? (

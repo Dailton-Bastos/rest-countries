@@ -16,7 +16,15 @@ export const ThemeSwitcher = () => {
 
   return (
     <button
-      className='flex items-center justify-center gap-x-1 font-semibold'
+      className='
+				flex
+				items-center
+				justify-center
+				gap-x-1
+				font-semibold
+				text-sm
+				lg:text-base
+			'
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       {theme === 'light' ? <IoMoonOutline /> : <IoSunnyOutline />}

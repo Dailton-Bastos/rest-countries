@@ -24,9 +24,12 @@ export const Header = () => {
 				mx-auto
 				py-6
 				px-4
+				lg:px-8
 			'
       >
-        <span className='font-extrabold text-2xl'>Where in the world?</span>
+        <span className='font-extrabold text-base lg:text-2xl'>
+          Where in the world?
+        </span>
 
         <ThemeSwitcher />
       </div>

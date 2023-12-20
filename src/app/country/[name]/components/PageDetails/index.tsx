@@ -31,23 +31,36 @@ export const PageDetails = ({ country }: PropsType) => {
     [country]
   )
 
-  const liClassName = 'py-1 text-base text-blue-950 dark:text-white'
+  const liClassName = 'py-1 text-sm lg:text-base text-blue-950 dark:text-white'
   const spanClassName = 'text-sm text-gray-900 dark:text-white font-light'
 
   return (
-    <div className='pl-28'>
+    <div className='pt-8 lg:pl-28 lg:pt-0'>
       <h1
         className='
 					font-bold
-					text-5xl
+					text-2xl
 					text-blue-950
 					dark:text-white
+					lg:text-5xl
 				'
       >
         {data?.name?.common}
       </h1>
 
-      <div className='flex items-start justify-between pt-10 gap-5'>
+      <div
+        className='
+				flex
+				items-start
+				justify-start
+				flex-col
+				pt-6
+				gap-5
+				lg:pt-10
+				lg:justify-between
+				lg:flex-row
+			'
+      >
         <ul>
           <li className={liClassName}>
             <strong>Native Name:</strong>{' '}

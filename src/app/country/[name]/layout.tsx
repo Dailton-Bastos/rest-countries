@@ -22,7 +22,7 @@ export async function generateMetadata({
 }
 
 const CountryLayout = ({ children }: PropsType) => {
-  return <div className='py-20'>{children}</div>
+  return <div className='px-4 py-8 lg:px-0 lg:py-20'>{children}</div>
 }
 
 export default CountryLayout

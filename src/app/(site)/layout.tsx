@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const HomeLayout = ({ children }: PropsType) => {
   return (
-    <div className='pt-6'>
+    <div className='lg:pt-6'>
       {children}
 
       <ScrollToTop />

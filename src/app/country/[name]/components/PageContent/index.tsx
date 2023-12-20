@@ -27,8 +27,16 @@ export const PageContent = ({ country }: PropsType) => {
     <React.Fragment>
       <GoBackButton />
 
-      <section className='py-24'>
-        <div className='grid grid-cols-2 items-center justify-between'>
+      <section className='py-10 lg:py-24'>
+        <div
+          className='
+					grid
+					grid-cols-1
+					items-center
+					justify-between
+					lg:grid-cols-2
+				'
+        >
           <Image
             src={data?.flags?.url}
             alt={data?.flags?.alt}

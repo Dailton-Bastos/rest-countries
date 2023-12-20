@@ -17,7 +17,17 @@ export const PageContent = ({ data }: PropsType) => {
   return (
     <PageProvider data={data}>
       <section className='py-6'>
-        <div className='flex items-center justify-between'>
+        <div
+          className='
+					flex
+					items-start
+					justify-start
+					flex-col
+					lg:flex-row
+					lg:items-center
+					lg:justify-between
+				'
+        >
           <Search />
 
           <OrderBy />

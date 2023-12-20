@@ -30,7 +30,19 @@ export default function RootLayout({
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
           <Header />
 
-          <div className='max-w-[1440px] mx-auto py-20 px-4'>{children}</div>
+          <div
+            className='
+						max-w-[1440px]
+						mx-auto
+						pt-20
+						pb-5
+						px-4
+						lg:px-8
+						lg:pb-20
+					'
+          >
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

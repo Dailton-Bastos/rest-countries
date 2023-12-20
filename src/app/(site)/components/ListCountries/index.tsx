@@ -52,7 +52,17 @@ export const ListCountries = () => {
       loader={loader}
       endMessage={endMessage}
     >
-      <ul className='grid grid-cols-4 gap-20'>
+      <ul
+        className='
+				grid
+				grid-cols-1
+				gap-10
+				px-8
+				md:grid-cols-3
+				lg:grid-cols-4
+				lg:px-0
+				lg:gap-20'
+      >
         {countries?.map((country) => (
           <Card key={country?.name?.official} card={country} />
         ))}

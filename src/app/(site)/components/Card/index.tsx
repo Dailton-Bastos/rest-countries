@@ -42,7 +42,7 @@ export const Card = ({ card }: PropsType) => {
         />
 
         <div className='px-4 pt-6 pb-10 mt-auto text-blue-950 dark:text-white'>
-          <h2 className='font-extrabold text-2xl'>{name?.common}</h2>
+          <h2 className='font-extrabold text-xl lg:text-2xl'>{name?.common}</h2>
 
           <ul className='pt-2'>
             <li className='font-semibold leading-7'>

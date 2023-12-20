@@ -66,8 +66,17 @@ export const OrderBy = () => {
   useOnClickOutside(ref, handleClick)
 
   return (
-    <div className='relative' ref={ref}>
-      <div className='flex items-center justify-center gap-5'>
+    <div className='relative pt-10 lg:pt-0' ref={ref}>
+      <div
+        className='
+				flex
+				items-center
+				justify-center
+				gap-5
+				flex-row-reverse
+				lg:flex-row
+			'
+      >
         {selected && (
           <div className='flex items-center justify-center gap-2 py-2'>
             <span
@@ -132,7 +141,8 @@ export const OrderBy = () => {
 						bg-white
 						dark:bg-blue-800
 						absolute
-						top-11
+						top-22
+						lg:top-11
 						right-0
 						w-48
 					'
