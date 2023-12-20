@@ -40,6 +40,7 @@ export const ScrollToTop = () => {
 					rounded-full
 					animate-move-btn-scroll
 					hover:shadow-md
+					dark:bg-blue-800
 				'
         onClick={handleGoToTop}
       >

@@ -1,13 +1,20 @@
-'use client'
-
 import React from 'react'
-import { IoMoonOutline } from 'react-icons/io5'
+import { ThemeSwitcher } from '../ThemeSwitcher'
 
 export const Header = () => {
-  const [mode, setMode] = React.useState('Light Mode')
-
   return (
-    <header className='bg-white shadow-sm fixed top-0 left-0 w-full'>
+    <header
+      className='
+			bg-white
+			dark:bg-blue-800
+			shadow-sm
+			fixed
+			top-0
+			left-0
+			w-full
+			z-10
+		'
+    >
       <div
         className='
 				flex
@@ -21,13 +28,7 @@ export const Header = () => {
       >
         <span className='font-extrabold text-2xl'>Where in the world?</span>
 
-        <button
-          className='flex items-center justify-center gap-x-1 font-semibold'
-          onClick={() => setMode('Dark Mode')}
-        >
-          <IoMoonOutline />
-          {mode}
-        </button>
+        <ThemeSwitcher />
       </div>
     </header>
   )

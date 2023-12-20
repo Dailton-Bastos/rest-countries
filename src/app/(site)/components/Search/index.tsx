@@ -1,10 +1,14 @@
 import React from 'react'
 import { IoMdSearch } from 'react-icons/io'
 import { CgSpinner } from 'react-icons/cg'
+import { useTheme } from 'next-themes'
 import { usePageContext } from '../../context/PageProvider'
 import type { Country } from '@/@types/country'
+import { twMerge } from 'tailwind-merge'
 
 export const Search = () => {
+  const { theme } = useTheme()
+
   const debounceRef = React.useRef<NodeJS.Timeout>()
 
   const {
@@ -58,6 +62,8 @@ export const Search = () => {
     [dispatch, searchCountriesByQuery]
   )
 
+  const InputIcon = isLoading ? CgSpinner : IoMdSearch
+
   return (
     <div
       className='
@@ -65,6 +71,7 @@ export const Search = () => {
 			shadow
 			rounded-md
 			bg-white
+			dark:bg-blue-800
 			overflow-hidden
 			w-full
 			max-w-[400px]
@@ -85,15 +92,11 @@ export const Search = () => {
 				pointer-events-none
 				'
       >
-        {isLoading ? (
-          <CgSpinner
-            color='hsl(0, 0%, 52%)'
-            size={22}
-            className='animate-spin'
-          />
-        ) : (
-          <IoMdSearch color='hsl(0, 0%, 52%)' size={22} />
-        )}
+        <InputIcon
+          color={theme === 'light' ? 'hsl(0, 0%, 52%)' : '#fff'}
+          size={22}
+          className={twMerge(isLoading && 'animate-spin')}
+        />
       </div>
 
       <input
@@ -106,8 +109,11 @@ export const Search = () => {
 					p-3
 					ps-14
 					text-sm
+					bg-white
+					dark:bg-blue-800
 					focus:outline-none
 					placeholder:text-gray-900
+					dark:placeholder:text-white
 				'
         value={value}
         onChange={onQueryChange}

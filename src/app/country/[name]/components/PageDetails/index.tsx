@@ -31,6 +31,9 @@ export const PageDetails = ({ country }: PropsType) => {
     [country]
   )
 
+  const liClassName = 'py-1 text-base text-blue-950 dark:text-white'
+  const spanClassName = 'text-sm text-gray-900 dark:text-white font-light'
+
   return (
     <div className='pl-28'>
       <h1
@@ -38,6 +41,7 @@ export const PageDetails = ({ country }: PropsType) => {
 					font-bold
 					text-5xl
 					text-blue-950
+					dark:text-white
 				'
       >
         {data?.name?.common}
@@ -45,50 +49,50 @@ export const PageDetails = ({ country }: PropsType) => {
 
       <div className='flex items-start justify-between pt-10 gap-5'>
         <ul>
-          <li className='py-1 text-base text-blue-950'>
+          <li className={liClassName}>
             <strong>Native Name:</strong>{' '}
-            <span className='text-gray-900'>{data.name.official}</span>
+            <span className={spanClassName}>{data.name.official}</span>
           </li>
 
-          <li className='py-1 text-base text-blue-950'>
+          <li className={liClassName}>
             <strong>Population:</strong>{' '}
             <CountUp
               end={data.population}
               duration={2.75}
-              className='text-gray-900 text-sm'
+              className={spanClassName}
             />
           </li>
 
-          <li className='py-1 text-base text-blue-950'>
+          <li className={liClassName}>
             <strong>Region:</strong>{' '}
-            <span className='text-gray-900'>{data.region}</span>
+            <span className={spanClassName}>{data.region}</span>
           </li>
 
-          <li className='py-1 text-base text-blue-950'>
+          <li className={liClassName}>
             <strong>Sub Region:</strong>{' '}
-            <span className='text-gray-900'>{data.subregion}</span>
+            <span className={spanClassName}>{data.subregion}</span>
           </li>
 
-          <li className='py-1 text-base text-blue-950'>
+          <li className={liClassName}>
             <strong>Capital:</strong>{' '}
-            <span className='text-gray-900'>{data.capital}</span>
+            <span className={spanClassName}>{data.capital}</span>
           </li>
         </ul>
 
         <ul>
-          <li className='py-1 text-base text-blue-950'>
+          <li className={liClassName}>
             <strong>Top Level Domain:</strong>{' '}
-            <span className='text-gray-900'>{data.topLevelDomain}</span>
+            <span className={spanClassName}>{data.topLevelDomain}</span>
           </li>
 
-          <li className='py-1 text-base text-blue-950'>
+          <li className={liClassName}>
             <strong>Currencies:</strong>{' '}
-            <span className='text-gray-900'>{data.currencies}</span>
+            <span className={spanClassName}>{data.currencies}</span>
           </li>
 
-          <li className='py-1 text-base text-blue-950'>
+          <li className={liClassName}>
             <strong>Languages:</strong>{' '}
-            <span className='text-gray-900'>{data.languages}</span>
+            <span className={spanClassName}>{data.languages}</span>
           </li>
 
           <li
@@ -96,10 +100,11 @@ export const PageDetails = ({ country }: PropsType) => {
 							py-1
 							text-base
 							text-blue-950
+							dark:text-white
 							flex
 							items-center
 							gap-2
-									'
+						'
           >
             <strong>Independent:</strong>{' '}
             <div

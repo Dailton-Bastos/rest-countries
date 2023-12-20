@@ -15,6 +15,8 @@ export const Card = ({ card }: PropsType) => {
 
   const image = flags?.svg ?? flags?.png
 
+  const liClassName = ''
+
   return (
     <li
       className='
@@ -23,6 +25,7 @@ export const Card = ({ card }: PropsType) => {
 			overflow-hidden
 			shadow
 			hover:shadow-md
+			dark:bg-blue-800
 			'
     >
       <Link
@@ -35,30 +38,34 @@ export const Card = ({ card }: PropsType) => {
           alt={flags?.alt || name?.common}
           width={320}
           height={224}
-          className='max-h-48 object-contain w-full h-auto'
+          className='max-h-48 object-cover w-full h-auto'
         />
 
-        <div className='px-4 pt-6 pb-10 mt-auto'>
-          <h2 className='text-blue-950 font-extrabold text-2xl'>
-            {name?.common}
-          </h2>
+        <div className='px-4 pt-6 pb-10 mt-auto text-blue-950 dark:text-white'>
+          <h2 className='font-extrabold text-2xl'>{name?.common}</h2>
 
           <ul className='pt-2'>
-            <li className='text-blue-950 font-semibold leading-7'>
+            <li className='font-semibold leading-7'>
               Population:{' '}
               <CountUp
                 end={population}
                 duration={2.75}
-                className='text-gray-900 text-sm'
+                className='text-gray-900 dark:text-white font-light text-sm'
               />
             </li>
 
-            <li className='text-blue-950 font-semibold leading-7'>
-              Region: <span className='text-gray-900 text-sm'>{region}</span>
+            <li className='font-semibold leading-7'>
+              Region:{' '}
+              <span className='text-gray-900 dark:text-white font-light text-sm'>
+                {region}
+              </span>
             </li>
 
-            <li className='text-blue-950 font-semibold leading-7'>
-              Capital: <span className='text-gray-900 text-sm'>{capital}</span>
+            <li className='font-semibold leading-7'>
+              Capital:{' '}
+              <span className='text-gray-900 dark:text-white font-light text-sm'>
+                {capital}
+              </span>
             </li>
           </ul>
         </div>

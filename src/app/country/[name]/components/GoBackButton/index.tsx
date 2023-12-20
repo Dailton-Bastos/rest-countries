@@ -14,6 +14,7 @@ export const GoBackButton = () => {
       onClick={() => router.push('/', { scroll: false })}
       className='
 				bg-gray-50
+				dark:bg-blue-800
 				flex
 				items-center
 				justify-center
@@ -22,6 +23,7 @@ export const GoBackButton = () => {
 				w-32
 				text-sm
 				text-blue-950
+				dark:text-white
 				rounded
 				shadow-[0_3px_8px_rgb(0,0,0,0.3)]
 				'

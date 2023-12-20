@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Nunito } from 'next/font/google'
 import { twMerge } from 'tailwind-merge'
 
+import { ThemeProvider } from './theme-provider'
 import { Header } from '@/components/Header'
 
 import './globals.css'
@@ -19,11 +20,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en' className='scroll-smooth'>
-      <body className={twMerge('bg-gray-50', nunito.className)}>
-        <Header />
+    <html lang='en' className='scroll-smooth' suppressHydrationWarning>
+      <body
+        className={twMerge(
+          'bg-gray-50 dark:bg-blue-900 duration-200',
+          nunito.className
+        )}
+      >
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          <Header />
 
-        <div className='max-w-[1440px] mx-auto py-20 px-4'>{children}</div>
+          <div className='max-w-[1440px] mx-auto py-20 px-4'>{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   )

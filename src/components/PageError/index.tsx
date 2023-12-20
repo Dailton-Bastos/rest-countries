@@ -21,7 +21,7 @@ export const PageError = ({ reset }: PropsType) => {
 			py-10
 			'
     >
-      <h2 className='text-lg font-semibold mb-4'>Something went wrong!</h2>
+      <h2 className='text-lg font-semibold mb-4'>Ops, something went wrong!</h2>
 
       <button
         className='
@@ -29,11 +29,13 @@ export const PageError = ({ reset }: PropsType) => {
 				items-center
 				gap-x-2
 				text-blue-950
+				dark:text-white
 				font-semibold
 				text-sm
 				shadow
 				rounded-md
 				bg-white
+				dark:bg-blue-800
 				px-6
 				py-3
 				hover:shadow-md

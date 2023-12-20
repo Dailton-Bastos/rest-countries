@@ -65,10 +65,14 @@ export const BorderCountries = ({ borders = [] }: PropsType) => {
         ) : (
           <>
             {borderCountry?.map((border) => (
-              <li className='text-gray-900' key={border?.name?.official}>
+              <li
+                className='text-gray-900 dark:text-white'
+                key={border?.name?.official}
+              >
                 <button
                   className='
 									bg-gray-50
+									dark:bg-blue-800
 										text-sm
 										rounded
 										px-4

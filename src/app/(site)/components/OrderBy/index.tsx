@@ -3,6 +3,7 @@
 import React from 'react'
 import { IoIosArrowDown, IoMdCloseCircle } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
+import { useTheme } from 'next-themes'
 import { useOnClickOutside } from 'usehooks-ts'
 import type { OrderByType } from '@/@types'
 import { usePageContext } from '../../context/PageProvider'
@@ -40,6 +41,8 @@ export const OrderBy = () => {
 
   const { state, dispatch } = usePageContext()
 
+  const { theme } = useTheme()
+
   const { orderBy: selected } = state
 
   const orderBy = React.useCallback(
@@ -68,7 +71,7 @@ export const OrderBy = () => {
         {selected && (
           <div className='flex items-center justify-center gap-2 py-2'>
             <span
-              className='text-blue-950 font-bold text-sm capitalize'
+              className='text-blue-950 dark:text-white font-bold text-sm capitalize'
               data-testid='selected-order'
             >
               {selected}
@@ -86,11 +89,13 @@ export const OrderBy = () => {
 						justify-between
 						gap-x-8
 						text-blue-950
+						dark:text-white
 						font-semibold
 						text-sm
 						shadow
 						rounded-md
 						bg-white
+						dark:bg-blue-800
 						px-4
 						h-11
 						w-48
@@ -109,7 +114,10 @@ export const OrderBy = () => {
               isOpen && 'rotate-180'
             )}
           >
-            <IoIosArrowDown color='hsl(200, 15%, 8%)' size={18} />
+            <IoIosArrowDown
+              color={theme === 'light' ? 'hsl(200, 15%, 8%)' : '#fff'}
+              size={18}
+            />
           </div>
         </button>
       </div>
@@ -122,6 +130,7 @@ export const OrderBy = () => {
 						shadow
 						rounded-md
 						bg-white
+						dark:bg-blue-800
 						absolute
 						top-11
 						right-0
@@ -133,6 +142,7 @@ export const OrderBy = () => {
             className='
 						w-full
 						text-blue-950
+						dark:text-white
 						py-2
 					'
           >
@@ -144,8 +154,9 @@ export const OrderBy = () => {
 									font-semibold
 									text-sm
 									hover:bg-gray-50
+									dark:hover:bg-blue-900
 								`,
-                  order.type === selected && 'bg-gray-100'
+                  order.type === selected && 'bg-gray-100 dark:bg-blue-900'
                 )}
               >
                 <button
