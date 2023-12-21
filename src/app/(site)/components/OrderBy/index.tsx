@@ -123,10 +123,7 @@ export const OrderBy = () => {
               isOpen && 'rotate-180'
             )}
           >
-            <IoIosArrowDown
-              color={theme === 'light' ? 'hsl(200, 15%, 8%)' : '#fff'}
-              size={18}
-            />
+            <IoIosArrowDown size={18} />
           </div>
         </button>
       </div>

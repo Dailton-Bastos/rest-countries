@@ -90,13 +90,11 @@ export const Search = () => {
 				items-center
 				ps-3
 				pointer-events-none
+				text-gray-900
+				dark:text-white
 				'
       >
-        <InputIcon
-          color={theme === 'light' ? 'hsl(0, 0%, 52%)' : '#fff'}
-          size={22}
-          className={twMerge(isLoading && 'animate-spin')}
-        />
+        <InputIcon size={22} className={twMerge(isLoading && 'animate-spin')} />
       </div>
 
       <input
