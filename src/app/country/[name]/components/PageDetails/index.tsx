@@ -111,7 +111,8 @@ export const PageDetails = ({ country }: PropsType) => {
           <li
             className='
 							py-1
-							text-base
+							text-sm
+							lg:text-base
 							text-blue-950
 							dark:text-white
 							flex

@@ -142,8 +142,10 @@ export const OrderBy = () => {
 						dark:bg-blue-800
 						absolute
 						top-22
+						left-0
+						lg:left-auto
 						lg:top-11
-						right-0
+						lg:right-0
 						w-48
 					'
           data-testid='menu-dropdown'

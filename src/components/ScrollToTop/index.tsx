@@ -29,14 +29,17 @@ export const ScrollToTop = () => {
         className='
 					fixed
 					bottom-10
-					right-6
+					right-2
+					lg:right-6
 					flex
 					items-center
 					justify-center
 					shadow
 					bg-white
-					w-12
-					h-12
+					w-10
+					h-10
+					lg:w-12
+					lg:h-12
 					rounded-full
 					animate-move-btn-scroll
 					hover:shadow-md
